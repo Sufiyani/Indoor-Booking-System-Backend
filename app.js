@@ -28,7 +28,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: [
+    process.env.FRONTEND_URL,
+    'http://localhost:5173',
+    'https://indoor-booking-system-frontend.vercel.app',
+    'https://indoor-booking-system-frontend.vercel.app/', // slash wala bhi
+  ],
   credentials: true
 }));
 
