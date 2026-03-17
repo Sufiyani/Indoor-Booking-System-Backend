@@ -28,20 +28,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173', // ← fallback add kiya
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
   credentials: true
 }));
 
-// Routes
 app.use("/admin", adminRoutes);
 app.use("/api/bookings", bookingRoutes);
 
-// Root route
 app.get("/", (req, res) => {
-  res.json({ message: "🏏 Indoor Booking System API Running 🚀" }); // ← json better hai
+  res.json({ message: "🏏 Indoor Booking System API Running 🚀" });
 });
 
-// Error handler
 app.use(errorMiddleware);
 
 app.listen(port, () => 
